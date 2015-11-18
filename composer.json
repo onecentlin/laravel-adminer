@@ -1,0 +1,25 @@
+{
+    "name": "onecentlin/laravel-adminer",
+    "description": "Laravel Adminer Database Manager",
+    "keywords": ["laravel", "adminer", "database", "mysql"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Winnie Lin",
+            "email": "onecentlin@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "laravel/framework": "~5.0|~5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Onecentlin\\Adminer\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev"
+}
