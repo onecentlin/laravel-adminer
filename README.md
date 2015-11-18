@@ -12,7 +12,7 @@ OR
 Update `composer.json` in require section:
 ```
 "require": {
-    "onecentlin/laravel-adminer": "dev-master"
+    "onecentlin/laravel-adminer": "~1.0"
 },
 ```
 
@@ -71,4 +71,4 @@ http://localhost/adminer
 Due to function name conflicts of Laravel 5 and Adminer, adminer.php file
 functions `cookie()`, `redirect()` and `view()` are prefixed with `adm_` prefix.
 
-Inspired by [miroc](https://github.com/miroc/Laravel-Adminer])
+Inspired by [miroc](https://github.com/miroc/Laravel-Adminer)
