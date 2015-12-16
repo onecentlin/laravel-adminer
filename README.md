@@ -45,7 +45,7 @@ You may download `adminer.css` from [Adminer](https://www.adminer.org) or create
 
 #### Laravel 5.1
 
-Modify `VerifyCsrfToken.php`, add `adminer` to `$except` array:
+Modify `app/Http/Middleware/VerifyCsrfToken.php`, add `adminer` to `$except` array:
 ```php
 protected $except = [
     'adminer'
@@ -54,17 +54,18 @@ protected $except = [
 
 ### Setup Access Permission
 
-Setup route middleware in `Kernel.php`
+Setup route middleware in `app/Http/Kernel.php`
 ```php
 protected $routeMiddleware = [
+    ...
     'adminer' => \App\Http\Middleware\Authenticate::class,
 ];
 ```
 
 ## Usage
-Open URL
+Open URL in web browser
 ```
-http://localhost/adminer
+http://[your.domain.com]/adminer
 ```
 
 ## Remarks
