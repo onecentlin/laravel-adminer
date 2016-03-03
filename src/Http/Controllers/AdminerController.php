@@ -15,7 +15,7 @@ class AdminerController extends Controller
         $this->middleware('adminer');
 
         // adminer version
-        $this->version = '4.2.3';
+        $this->version = '4.2.4';
         // default adminer
         $this->adminer = sprintf('adminer-%s-mysql-en.php', $this->version);
     }
