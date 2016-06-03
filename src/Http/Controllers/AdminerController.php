@@ -15,9 +15,9 @@ class AdminerController extends Controller
         $this->middleware('adminer');
 
         // adminer version
-        $this->version = '4.2.4';
+        $this->version = '4.2.5';
         // default adminer
-        $this->adminer = sprintf('adminer-%s-mysql-en.php', $this->version);
+        $this->adminer = sprintf('adminer-%s-en.php', $this->version);
     }
 
     public function index()
@@ -27,7 +27,7 @@ class AdminerController extends Controller
         // localization
         switch ($locale) {
             case 'zh-TW':
-                $this->adminer = sprintf('adminer-%s-mysql-%s.php', $this->version, strtolower($locale));
+                $this->adminer = sprintf('adminer-%s-%s.php', $this->version, strtolower($locale));
                 break;
         }
 
