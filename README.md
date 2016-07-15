@@ -70,7 +70,7 @@ Open URL in web browser
 http://[your.domain.com]/adminer
 ```
 
-![Screenshot](screenshots/adminer-db-support.png "various database support")
+![Screenshot](https://raw.githubusercontent.com/onecentlin/laravel-adminer/master/screenshots/adminer-db-support.png "various database support")
 
 ## Remarks
 Due to function name conflicts of Laravel 5 and Adminer, adminer.php file
