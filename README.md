@@ -12,9 +12,10 @@ composer require onecentlin/laravel-adminer
 OR
 
 Update `composer.json` in require section:
-```
+
+```json
 "require": {
-    "onecentlin/laravel-adminer": "~1.0"
+    "onecentlin/laravel-adminer": "^1.2"
 },
 ```
 
@@ -39,6 +40,7 @@ Update `config/app.php`
 #### Laravel 5.1
 
 Modify `app/Http/Middleware/VerifyCsrfToken.php`, add `adminer` to `$except` array:
+
 ```php
 protected $except = [
     'adminer'
@@ -48,6 +50,7 @@ protected $except = [
 ### Setup Access Permission
 
 Setup route middleware in `app/Http/Kernel.php`
+
 ```php
 protected $routeMiddleware = [
     ...
@@ -55,16 +58,34 @@ protected $routeMiddleware = [
 ];
 ```
 
+#### Example in Laravel 5.2 above
+
+Setup for middleware group supported for Laravel 5.2 above
+
+```php
+protected $middlewareGroups = [
+    ...
+    'adminer' => [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+
+        // you may create customized middleware to fit your needs
+        \Illuminate\Auth\Middleware\Authenticate::class,
+    ],
+];
+```
+
 ### Adminer Theme (Optional)
 
 Publish theme file (You may use the default theme without executing this action)
 ```
-artisan vendor:publish --provider="Onecentlin\Adminer\ServiceProvider"
+php artisan vendor:publish --provider="Onecentlin\Adminer\ServiceProvider"
 ```
 
 You may download `adminer.css` from [Adminer](https://www.adminer.org) or create custom style, and place it into `public` folder.
 
-## Usage
+## Access adminer
 Open URL in web browser
 ```
 http://[your.domain.com]/adminer
