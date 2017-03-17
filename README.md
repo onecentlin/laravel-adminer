@@ -15,7 +15,7 @@ Update `composer.json` in require section:
 
 ```json
 "require": {
-    "onecentlin/laravel-adminer": "^1.2"
+    "onecentlin/laravel-adminer": "^1.3"
 },
 ```
 
