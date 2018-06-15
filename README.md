@@ -15,7 +15,7 @@ Update `composer.json` in require section:
 
 ```json
 "require": {
-    "onecentlin/laravel-adminer": "^1.3"
+    "onecentlin/laravel-adminer": "^1.4"
 },
 ```
 
@@ -71,6 +71,7 @@ protected $middlewareGroups = [
         \Illuminate\Session\Middleware\StartSession::class,
 
         // you may create customized middleware to fit your needs
+        // example uses Laravel default authentication (default protection)
         \Illuminate\Auth\Middleware\Authenticate::class,
     ],
 ];
