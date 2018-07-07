@@ -9,13 +9,14 @@ Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, S
 ```
 composer require onecentlin/laravel-adminer
 ```
+
 OR
 
 Update `composer.json` in require section:
 
 ```json
 "require": {
-    "onecentlin/laravel-adminer": "^1.4"
+    "onecentlin/laravel-adminer": "^4.6"
 },
 ```
 
