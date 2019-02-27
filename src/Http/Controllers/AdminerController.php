@@ -15,7 +15,7 @@ class AdminerController extends Controller
         $this->middleware('adminer');
 
         // adminer version
-        $this->version = '4.6.3';
+        $this->version = '4.7.1';
         // default adminer
         $this->adminer = $this->getAdminerFileName();
     }
