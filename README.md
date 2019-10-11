@@ -1,6 +1,6 @@
 # Laravel Adminer Database Manager
 
-Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5.
+Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5/6.
 
 Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, SimpleDB, MongoDB, Elasticsearch, and etc.
 
@@ -36,32 +36,13 @@ Update `config/app.php`
 ];
 ```
 
-### Disable CSRF
+## Setup Access Permission
 
-#### Laravel 5.1
-
-Modify `app/Http/Middleware/VerifyCsrfToken.php`, add `adminer` to `$except` array:
-
-```php
-protected $except = [
-    'adminer'
-];
-```
-
-### Setup Access Permission
-
-Setup route middleware in `app/Http/Kernel.php`
-
-```php
-protected $routeMiddleware = [
-    ...
-    'adminer' => \App\Http\Middleware\Authenticate::class,
-];
-```
-
-#### Example in Laravel 5.2 above
+### Laravel 5.2 and above (Laravel 6 supported)
 
 Setup for middleware group supported for Laravel 5.2 above
+
+Modify `app/Http/Kernel.php` file with adminer in `$middlewareGroups` 
 
 ```php
 protected $middlewareGroups = [
@@ -78,7 +59,30 @@ protected $middlewareGroups = [
 ];
 ```
 
-### Adminer Theme (Optional)
+### Laravel 5.1 only
+
+#### Disable CSRF
+
+Modify `app/Http/Middleware/VerifyCsrfToken.php`, add `adminer` to `$except` array:
+
+```php
+protected $except = [
+    'adminer'
+];
+```
+
+#### Setup route middleware for access permission
+
+Setup route middleware in `app/Http/Kernel.php`
+
+```php
+protected $routeMiddleware = [
+    ...
+    'adminer' => \App\Http\Middleware\Authenticate::class,
+];
+```
+
+## Adminer Theme (Optional)
 
 Publish theme file (You may use the default theme without executing this action)
 ```
