@@ -1,7 +1,16 @@
 {
     "name": "onecentlin/laravel-adminer",
     "description": "Laravel Adminer Database Manager",
-    "keywords": ["laravel5", "laravel6", "adminer", "database", "management", "mysql", "sqlite"],
+    "keywords": [
+        "laravel5",
+        "laravel6",
+        "laravel7",
+        "adminer",
+        "database",
+        "management",
+        "mysql",
+        "sqlite"
+    ],
     "license": "MIT",
     "authors": [
         {
