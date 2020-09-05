@@ -1,6 +1,6 @@
 # Laravel Adminer Database Manager
 
-Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5/6.
+Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5/6/7/8.
 
 Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, SimpleDB, MongoDB, Elasticsearch, and etc.
 
@@ -42,7 +42,7 @@ Update `config/app.php`
 
 Setup for middleware group supported for Laravel 5.2 above
 
-Modify `app/Http/Kernel.php` file with adminer in `$middlewareGroups` 
+Modify `app/Http/Kernel.php` file with adminer in `$middlewareGroups`
 
 ```php
 protected $middlewareGroups = [
