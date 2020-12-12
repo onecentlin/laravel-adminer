@@ -23,10 +23,11 @@ class AdminerController extends Controller
     public function index()
     {
         // Autologin
-        if (! isset($_GET['db'])){
+        if (! isset($_GET['db']) && config('adminer.autologin')) {
             $database_driver = env('DB_CONNECTION');
-            if($database_driver === "mysql")
+            if ($database_driver === "mysql") {
                 $database_driver = "server";
+            }
 
             $_POST['auth']['driver'] = $database_driver;
             $_POST['auth']['server'] = env('DB_HOST');

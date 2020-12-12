@@ -33,7 +33,8 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->publishes([
             __DIR__.'/../public' => public_path(),
-        ], 'public');
+            __DIR__.'/../config/adminer.php' => config_path('adminer.php'),
+        ], 'adminer');
     }
 
     public function register()
