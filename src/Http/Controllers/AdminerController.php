@@ -22,6 +22,19 @@ class AdminerController extends Controller
 
     public function index()
     {
+        // Autologin
+        if (! isset($_GET['db'])){
+            $database_driver = env('DB_CONNECTION');
+            if($database_driver === "mysql")
+                $database_driver = "server";
+
+            $_POST['auth']['driver'] = $database_driver;
+            $_POST['auth']['server'] = env('DB_HOST');
+            $_POST['auth']['db'] = env('DB_DATABASE');
+            $_POST['auth']['username'] = env('DB_USERNAME');
+            $_POST['auth']['password'] = env('DB_PASSWORD');
+        }
+        
         $locale = strtolower(app()->getLocale());
 
         // localization
