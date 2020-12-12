@@ -18,7 +18,12 @@ class ServiceProvider extends BaseServiceProvider
     protected function map($router)
     {
         if ($this->app->routesAreCached() === false) {
-            $prefix = 'adminer';
+            $prefix = config('adminer.route_prefix');
+
+            if ($prefix == null) {
+                $prefix = 'adminer';
+            }
+
             $group = $router->group([
                 'namespace' => $this->namespace,
                 'as' => 'adminer::',
