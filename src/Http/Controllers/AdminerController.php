@@ -24,11 +24,11 @@ class AdminerController extends Controller
     {
         // Autologin
         if (! isset($_GET['db']) && config('adminer.autologin')) {
-            $_POST['auth']['driver'] = $this->getDatabaseDriver(env('DB_CONNECTION'));
-            $_POST['auth']['server'] = env('DB_HOST');
-            $_POST['auth']['db'] = env('DB_DATABASE');
-            $_POST['auth']['username'] = env('DB_USERNAME');
-            $_POST['auth']['password'] = env('DB_PASSWORD');
+            $_POST['auth']['driver'] = $this->getDatabaseDriver(config('DB_CONNECTION'));
+            $_POST['auth']['server'] = config('DB_HOST');
+            $_POST['auth']['db'] = config('DB_DATABASE');
+            $_POST['auth']['username'] = config('DB_USERNAME');
+            $_POST['auth']['password'] = config('DB_PASSWORD');
         }
         
         $locale = strtolower(app()->getLocale());
