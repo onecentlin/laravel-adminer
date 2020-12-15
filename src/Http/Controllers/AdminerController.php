@@ -23,12 +23,13 @@ class AdminerController extends Controller
     public function index()
     {
         // Autologin
+        $db_connection = config('database.default');
         if (! isset($_GET['db']) && config('adminer.autologin')) {
-            $_POST['auth']['driver'] = $this->getDatabaseDriver(config('DB_CONNECTION'));
-            $_POST['auth']['server'] = config('DB_HOST');
-            $_POST['auth']['db'] = config('DB_DATABASE');
-            $_POST['auth']['username'] = config('DB_USERNAME');
-            $_POST['auth']['password'] = config('DB_PASSWORD');
+            $_POST['auth']['driver'] = $this->getDatabaseDriver($db_connection);
+            $_POST['auth']['server'] = config("database.connections.{$db_connection}.host");
+            $_POST['auth']['db'] = config("database.connections.{$db_connection}.database");
+            $_POST['auth']['username'] = config("database.connections.{$db_connection}.username");
+            $_POST['auth']['password'] = config("database.connections.{$db_connection}.password");
         }
         
         $locale = strtolower(app()->getLocale());
@@ -65,7 +66,7 @@ class AdminerController extends Controller
             <option value="sqlite2">SQLite 2</option>
             <option value="pgsql">PostgreSQL</option>
             <option value="oracle">Oracle (beta)</option>
-            <option value="mssql" selected="">MS SQL (beta)</option>
+            <option value="mssql">MS SQL (beta)</option>
             <option value="firebird">Firebird (alpha)</option>
             <option value="simpledb">SimpleDB</option>
             <option value="mongo">MongoDB</option>
