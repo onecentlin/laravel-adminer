@@ -25,7 +25,7 @@ class AdminerController extends Controller
         // Autologin
         $db_connection = config('database.default');
         if (! isset($_GET['db']) && config('adminer.autologin')) {
-            $_POST['auth']['driver'] = $this->getDatabaseDriver($db_connection);
+            $_POST['auth']['driver'] = $this->getDatabaseDriver(config("database.connections.{$db_connection}.driver"));
             $_POST['auth']['server'] = config("database.connections.{$db_connection}.host");
             $_POST['auth']['db'] = config("database.connections.{$db_connection}.database");
             $_POST['auth']['username'] = config("database.connections.{$db_connection}.username");
@@ -51,12 +51,12 @@ class AdminerController extends Controller
     }
 
     /**
-     * Mapping laravel db connection to adminer driver
+     * Mapping laravel connection driver to adminer driver
      *
-     * @param $connection
+     * @param $driver
      * @return string
      */
-    private function getDatabaseDriver($connection)
+    private function getDatabaseDriver($driver)
     {
         /*
             Adminer driver options
@@ -74,16 +74,16 @@ class AdminerController extends Controller
             <option value="clickhouse">ClickHouse (alpha)</option>
         */
 
-        switch ($connection) {
+        switch ($driver) {
             case "mysql":
                 return "server";
             case "sqlsrv":
                 return "mssql";
             default:
-                if (is_null($connection)) {
+                if (is_null($driver)) {
                     return "server";
                 }
-                return $connection;
+                return $driver;
         }
     }
 }
