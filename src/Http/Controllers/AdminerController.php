@@ -83,7 +83,7 @@ class AdminerController extends Controller
                 if (is_null($connection)) {
                     return "server";
                 }
-                return $connection;
+                return config("database.connections.{$connection}.driver");
         }
     }
 }
