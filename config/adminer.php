@@ -9,7 +9,7 @@ return [
     |
     | Enable autologin to database
     |
-    | ATTENSION: Please only enable autologin with authenticated protection
+    | ATTENTION: Please only enable autologin with authenticated protection
     |
     */
     'autologin' => false,

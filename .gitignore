@@ -2,3 +2,6 @@
 /node_modules
 /resources/assets/vendor
 composer.lock
+/.idea
+/.vscode
+.DS_Store
