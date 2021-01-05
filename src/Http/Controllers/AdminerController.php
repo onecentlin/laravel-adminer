@@ -23,12 +23,13 @@ class AdminerController extends Controller
     public function index()
     {
         // Autologin
+        $db_connection = config('database.default');
         if (! isset($_GET['db']) && config('adminer.autologin')) {
-            $_POST['auth']['driver'] = $this->getDatabaseDriver(env('DB_CONNECTION'));
-            $_POST['auth']['server'] = env('DB_HOST');
-            $_POST['auth']['db'] = env('DB_DATABASE');
-            $_POST['auth']['username'] = env('DB_USERNAME');
-            $_POST['auth']['password'] = env('DB_PASSWORD');
+            $_POST['auth']['driver'] = $this->getDatabaseDriver(config("database.connections.{$db_connection}.driver"));
+            $_POST['auth']['server'] = config("database.connections.{$db_connection}.host");
+            $_POST['auth']['db'] = config("database.connections.{$db_connection}.database");
+            $_POST['auth']['username'] = config("database.connections.{$db_connection}.username");
+            $_POST['auth']['password'] = config("database.connections.{$db_connection}.password");
         }
         
         $locale = strtolower(app()->getLocale());
@@ -50,12 +51,12 @@ class AdminerController extends Controller
     }
 
     /**
-     * Mapping laravel db connection to adminer driver
+     * Mapping laravel connection driver to adminer driver
      *
-     * @param $connection
+     * @param $driver
      * @return string
      */
-    private function getDatabaseDriver($connection)
+    private function getDatabaseDriver($driver)
     {
         /*
             Adminer driver options
@@ -65,7 +66,7 @@ class AdminerController extends Controller
             <option value="sqlite2">SQLite 2</option>
             <option value="pgsql">PostgreSQL</option>
             <option value="oracle">Oracle (beta)</option>
-            <option value="mssql" selected="">MS SQL (beta)</option>
+            <option value="mssql">MS SQL (beta)</option>
             <option value="firebird">Firebird (alpha)</option>
             <option value="simpledb">SimpleDB</option>
             <option value="mongo">MongoDB</option>
@@ -73,16 +74,16 @@ class AdminerController extends Controller
             <option value="clickhouse">ClickHouse (alpha)</option>
         */
 
-        switch ($connection) {
+        switch ($driver) {
             case "mysql":
                 return "server";
             case "sqlsrv":
                 return "mssql";
             default:
-                if (is_null($connection)) {
+                if (is_null($driver)) {
                     return "server";
                 }
-                return $connection;
+                return $driver;
         }
     }
 }
