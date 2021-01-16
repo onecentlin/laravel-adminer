@@ -26,7 +26,7 @@ class AdminerController extends Controller
         $db_connection = config('database.default');
         if (! isset($_GET['db']) && config('adminer.autologin')) {
             $_POST['auth']['driver'] = $this->getDatabaseDriver(config("database.connections.{$db_connection}.driver"));
-            $_POST['auth']['server'] = config("database.connections.{$db_connection}.host");
+            $_POST['auth']['server'] = config("database.connections.{$db_connection}.host") . ':' . config("database.connections.{$db_connection}.port");
             $_POST['auth']['db'] = config("database.connections.{$db_connection}.database");
             $_POST['auth']['username'] = config("database.connections.{$db_connection}.username");
             $_POST['auth']['password'] = config("database.connections.{$db_connection}.password");
