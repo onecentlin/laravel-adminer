@@ -15,7 +15,7 @@ class AdminerController extends Controller
         $this->middleware('adminer');
 
         // adminer version
-        $this->version = '4.7.8';
+        $this->version = '4.8.1';
         // default adminer
         $this->adminer = $this->getAdminerFileName();
     }
@@ -31,7 +31,7 @@ class AdminerController extends Controller
             $_POST['auth']['username'] = config("database.connections.{$db_connection}.username");
             $_POST['auth']['password'] = config("database.connections.{$db_connection}.password");
         }
-        
+
         $locale = strtolower(app()->getLocale());
 
         // localization
