@@ -11,14 +11,14 @@ class ServiceProvider extends BaseServiceProvider
 
     public function boot(Router $router)
     {
-        $adminerEnabled = env('ADMINER_ENABLED', false);
-
-		if (!$adminerEnabled) {
-			return;
-		}
-        
-        $this->map($router);
         $this->publish();
+
+        $adminerEnabled = config('adminer.enabled');
+        if (!$adminerEnabled) {
+            return;
+        }
+
+        $this->map($router);
     }
 
     protected function map($router)
@@ -35,7 +35,7 @@ class ServiceProvider extends BaseServiceProvider
                 'as' => 'adminer::',
                 'prefix' => $prefix,
             ], function () {
-                require __DIR__.'/Http/routes.php';
+                require __DIR__ . '/Http/routes.php';
             });
         }
     }
@@ -43,8 +43,8 @@ class ServiceProvider extends BaseServiceProvider
     protected function publish()
     {
         $this->publishes([
-            __DIR__.'/../public' => public_path(),
-            __DIR__.'/../config/adminer.php' => config_path('adminer.php'),
+            __DIR__ . '/../public' => public_path(),
+            __DIR__ . '/../config/adminer.php' => config_path('adminer.php'),
         ], 'adminer');
     }
 

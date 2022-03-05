@@ -1,6 +1,13 @@
 <?php
 
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Enable Adminer
+    |--------------------------------------------------------------------------
+    |
+    */
+    'enabled' => env('ADMINER_ENABLED', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -12,7 +19,7 @@ return [
     | ATTENTION: Please only enable autologin with authenticated protection
     |
     */
-    'autologin' => false,
+    'autologin' => env('ADMINER_AUTO_LOGIN', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,5 +29,5 @@ return [
     | You may customize route prefix. (default: 'adminer')
     |
     */
-    'route_prefix' => 'adminer',
+    'route_prefix' => env('ADMINER_ROUTE_PREFIX', 'adminer'),
 ];

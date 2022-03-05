@@ -1,12 +1,14 @@
 # Laravel Adminer Database Manager
 
-Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5/6/7/8.
+Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5/6/7/8/9.
 
 Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, SimpleDB, MongoDB, Elasticsearch, and etc.
 
-> v5.0 New Feature: 
-> - enable autologin to database (default: `false`)
-> - customize route prefix (default: `adminer`)
+> v6.0 New Features:
+> - Enable env variables to setup adminer config
+> - `ADMINER_ENABLED`
+> - `ADMINER_AUTO_LOGIN`
+> - `ADMINER_ROUTE_PREFIX`
 
 ## Installation
 
@@ -20,7 +22,7 @@ Update `composer.json` in require section:
 
 ```json
 "require": {
-    "onecentlin/laravel-adminer": "^5.0"
+    "onecentlin/laravel-adminer": "^6.0"
 },
 ```
 
@@ -76,14 +78,13 @@ This action will copy two files:
 
 ### config file: `config/adminer.php`
 
-If you only want to config autologin feature, you may just add below content to `config/adminer.php` file.
-
 ```php
 <?php
 
 return [
-    'autologin' => false,
-    'route_prefix' => 'adminer',
+    'enabled' => env('ADMINER_ENABLED', true),
+    'autologin' => env('ADMINER_AUTO_LOGIN', false),
+    'route_prefix' => env('ADMINER_ROUTE_PREFIX', 'adminer'),
 ]
 ```
 
