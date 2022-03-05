@@ -11,6 +11,12 @@ class ServiceProvider extends BaseServiceProvider
 
     public function boot(Router $router)
     {
+        $adminerEnabled = env('ADMINER_ENABLED', false);
+
+		if (!$adminerEnabled) {
+			return;
+		}
+        
         $this->map($router);
         $this->publish();
     }
