@@ -4,11 +4,16 @@ Light weight [Adminer](https://www.adminer.org) database management tool integra
 
 Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, SimpleDB, MongoDB, Elasticsearch, and etc.
 
-> v6.0 New Features:
-> - Enable env variables to setup adminer config
-> - `ADMINER_ENABLED`
-> - `ADMINER_AUTO_LOGIN`
-> - `ADMINER_ROUTE_PREFIX`
+## v6.0 New Features
+
+ Make life easier with minimized package setup =)
+
+- Enable laravel auto package discovery
+- New config setting: `middleware` (default value: `auth`)
+- Enable env variables to setup adminer config
+    - `ADMINER_ENABLED`
+    - `ADMINER_AUTO_LOGIN`
+    - `ADMINER_ROUTE_PREFIX`
 
 ## Installation
 
@@ -28,10 +33,12 @@ Update `composer.json` in require section:
 
 Run:
 ```
-composer update
+composer update onecentlin/laravel-adminer
 ```
 
-## Prerequisite
+## Register package
+
+> Laravel auto package discovery feature added since package v6.0, you may skip this step.
 
 Update `config/app.php`
 
@@ -39,29 +46,6 @@ Update `config/app.php`
 'providers' => [
     ...
     Onecentlin\Adminer\ServiceProvider::class,
-];
-```
-
-## Setup Access Permission
-
-### Laravel 5.2 and above
-
-Setup for middleware group supported for Laravel 5.2 above
-
-Modify `app/Http/Kernel.php` file with adminer in `$middlewareGroups`
-
-```php
-protected $middlewareGroups = [
-    ...
-    'adminer' => [
-        \App\Http\Middleware\EncryptCookies::class,
-        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-        \Illuminate\Session\Middleware\StartSession::class,
-
-        // you may create customized middleware to fit your needs
-        // example uses Laravel default authentication (default protection)
-        \Illuminate\Auth\Middleware\Authenticate::class,
-    ],
 ];
 ```
 
@@ -85,6 +69,7 @@ return [
     'enabled' => env('ADMINER_ENABLED', true),
     'autologin' => env('ADMINER_AUTO_LOGIN', false),
     'route_prefix' => env('ADMINER_ROUTE_PREFIX', 'adminer'),
+    'middleware' => 'auth',
 ]
 ```
 
@@ -93,6 +78,29 @@ return [
 ### theme file: `public/adminer.css`
 
 You may download `adminer.css` from [Adminer](https://www.adminer.org) or create custom style, and place it into `public` folder.
+
+## Setup Access Permission (Middleware)
+
+> Package v6.0 allow customized middleware config, you may skip this step or modify to fit your needs.
+
+### Laravel 5.2 and above
+
+Setup for middleware group supported for Laravel 5.2 above
+
+Modify `config/adminer.php` : `'middleware' => 'adminer',`
+
+Modify `app/Http/Kernel.php` file with `adminer` in `$middlewareGroups`
+
+```php
+protected $middlewareGroups = [
+    ...
+    'adminer' => [
+        // TODO: you may create customized middleware to fit your needs
+        // example uses Laravel default authentication (default protection)
+        \Illuminate\Auth\Middleware\Authenticate::class,
+    ],
+];
+```
 
 ## Access adminer
 
