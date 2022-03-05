@@ -12,7 +12,7 @@ class AdminerController extends Controller
     public function __construct()
     {
         // add custom middleware to restrict access permission
-        $this->middleware('adminer');
+        $this->middleware(config('adminer.middleware', 'adminer'));
 
         // adminer version
         $this->version = '4.8.1';
@@ -24,7 +24,7 @@ class AdminerController extends Controller
     {
         // Autologin
         $db_connection = config('database.default');
-        if (! isset($_GET['db']) && config('adminer.autologin')) {
+        if (!isset($_GET['db']) && config('adminer.autologin')) {
             $_POST['auth']['driver'] = $this->getDatabaseDriver(config("database.connections.{$db_connection}.driver"));
             $_POST['auth']['server'] = config("database.connections.{$db_connection}.host") . ':' . config("database.connections.{$db_connection}.port");
             $_POST['auth']['db'] = config("database.connections.{$db_connection}.database");
@@ -39,10 +39,11 @@ class AdminerController extends Controller
             case 'zh-tw':
             case 'zh-hant':
                 $this->adminer = $this->getAdminerFileName('zh-tw');
+
                 break;
         }
 
-        require(__DIR__.'/../../../resources/'.$this->adminer);
+        require __DIR__ . '/../../../resources/' . $this->adminer;
     }
 
     private function getAdminerFileName($locale = 'en')
@@ -75,14 +76,15 @@ class AdminerController extends Controller
         */
 
         switch ($driver) {
-            case "mysql":
-                return "server";
-            case "sqlsrv":
-                return "mssql";
+            case 'mysql':
+                return 'server';
+            case 'sqlsrv':
+                return 'mssql';
             default:
                 if (is_null($driver)) {
-                    return "server";
+                    return 'server';
                 }
+
                 return $driver;
         }
     }

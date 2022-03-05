@@ -30,4 +30,20 @@ return [
     |
     */
     'route_prefix' => env('ADMINER_ROUTE_PREFIX', 'adminer'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Middleware for authentication protection
+    |
+    | Default laravel authentication middleware: 'auth'
+    |
+    | Multiple middleware allowed using array:
+    |    Example:
+    |       'middleware' => ['auth', 'adminer']
+    |
+    */
+    'middleware' => 'auth',
 ];
