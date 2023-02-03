@@ -95,6 +95,7 @@ Modify `app/Http/Kernel.php` file with `adminer` in `$middlewareGroups`
 protected $middlewareGroups = [
     ...
     'adminer' => [
+        \Illuminate\Session\Middleware\StartSession::class,
         // TODO: you may create customized middleware to fit your needs
         // example uses Laravel default authentication (default protection)
         \Illuminate\Auth\Middleware\Authenticate::class,

@@ -37,6 +37,7 @@ class AdminerController extends Controller
         // localization
         switch ($locale) {
             case 'zh-tw':
+            case 'zh_TW':
             case 'zh-hant':
                 $this->adminer = $this->getAdminerFileName('zh-tw');
 
