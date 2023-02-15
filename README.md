@@ -70,7 +70,7 @@ return [
     'autologin' => env('ADMINER_AUTO_LOGIN', false),
     'route_prefix' => env('ADMINER_ROUTE_PREFIX', 'adminer'),
     'middleware' => 'auth',
-]
+];
 ```
 
 > <span style="color: #a00">ATTENSION: Please only enable autologin with authenticated protection.</span>
@@ -95,6 +95,7 @@ Modify `app/Http/Kernel.php` file with `adminer` in `$middlewareGroups`
 protected $middlewareGroups = [
     ...
     'adminer' => [
+        \App\Http\Middleware\EncryptCookies::class,
         \Illuminate\Session\Middleware\StartSession::class,
         // TODO: you may create customized middleware to fit your needs
         // example uses Laravel default authentication (default protection)
