@@ -55,10 +55,11 @@ Update `config/app.php`
 php artisan vendor:publish --provider="Onecentlin\Adminer\ServiceProvider"
 ```
 
-This action will copy two files:
+This action will copy two files and one folder:
 
 - `config/adminer.php` - Adminer config file
 - `public/adminer.css` - Adminer theme file
+- `resources/plugins`  - Adminer plugins directory
 
 ### config file: `config/adminer.php`
 
@@ -70,6 +71,7 @@ return [
     'autologin' => env('ADMINER_AUTO_LOGIN', false),
     'route_prefix' => env('ADMINER_ROUTE_PREFIX', 'adminer'),
     'middleware' => 'auth',
+    'plugins' => [],
 ];
 ```
 
@@ -103,6 +105,24 @@ protected $middlewareGroups = [
     ],
 ];
 ```
+
+## Enable Plugins
+
+Drop your plugin files in `resources/adminer/plugins`
+
+Modify `config/adminer.php` : `'plugins' => []` by adding the name of the plugin class and any argument required
+
+```php
+return [
+    ...
+    'plugins' => [
+        'PluginClassNameWithoutArguments',
+        'PluginClassNameWithArgument' => 'argument_value',
+        'PluginClassNameWithMultipleArguments' => ['arg1', 'arg2', ...],
+    ],
+];
+```
+
 
 ## Access adminer
 

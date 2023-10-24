@@ -44,7 +44,8 @@ class AdminerController extends Controller
                 break;
         }
 
-        require __DIR__ . '/../../../resources/' . $this->adminer;
+        include_once __DIR__ . '/../../../resources/plugin-loader.php';
+        include_once __DIR__ . '/../../../resources/' . $this->adminer;
     }
 
     private function getAdminerFileName($locale = 'en')

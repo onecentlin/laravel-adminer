@@ -46,4 +46,27 @@ return [
     |
     */
     'middleware' => 'auth',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Plugins
+    |--------------------------------------------------------------------------
+    |
+    | Enable Adminer plugins loaded from /resources/adminer/plugins
+    |
+    | Example:
+    |
+    |   With arguments...
+    |   'PluginClassName' => ['class', 'arguments', ...]
+    |
+    |   or with a single argument
+    |   'PluginClassName' => 'argument'
+    |
+    |   or without arguments
+    |   'PluginClassName'
+    |
+    */
+    'plugins' => [
+
+    ],
 ];
