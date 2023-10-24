@@ -12,7 +12,7 @@ function adminer_object() {
     foreach (config('adminer.plugins', []) as $class => $args) {
         if (is_numeric($class)) {
             $class = $args;
-            $plugins[] = new $class();
+            array_push($plugins, new $class());
         }
         else {
             $args = is_array($args) ? $args : [$args];
