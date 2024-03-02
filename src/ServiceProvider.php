@@ -45,6 +45,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             __DIR__ . '/../public' => public_path(),
             __DIR__ . '/../config/adminer.php' => config_path('adminer.php'),
+            __DIR__ . '/../resources/plugins' => resource_path('adminer/plugins'),
         ], 'adminer');
     }
 
