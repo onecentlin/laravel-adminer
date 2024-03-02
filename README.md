@@ -4,6 +4,11 @@ Light weight [Adminer](https://www.adminer.org) database management tool integra
 
 Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, SimpleDB, MongoDB, Elasticsearch, and etc.
 
+## v7.0 New Features
+
+- Laravel 11.x Compatibility
+- Adminer plugins support
+
 ## v6.0 New Features
 
  Make life easier with minimized package setup =)
@@ -27,7 +32,7 @@ Update `composer.json` in require section:
 
 ```json
 "require": {
-    "onecentlin/laravel-adminer": "^6.0"
+    "onecentlin/laravel-adminer": "^7.0"
 },
 ```
 
@@ -85,9 +90,34 @@ You may download `adminer.css` from [Adminer](https://www.adminer.org) or create
 
 > Package v6.0 allow customized middleware config, you may skip this step or modify to fit your needs.
 
+### Laravel 11 middleware setup changes
+
+Since Laravel v11 remove `Kernel.php`, the middleware setup point to `bootstrap/app.php`
+
+Add your middleware group in `withMiddleware` section:
+
+```php
+return Application::configure(basePath: dirname(__DIR__))
+    ->withProviders()
+    ->withRouting()
+    ->withMiddleware(function (Middleware $middleware) {
+
+        // [SETUP HERE] Adminer Middleware group
+        $middleware->group('adminer', [
+            \Illuminate\Cookie\Middleware\EncryptCookies::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\Auth\Middleware\Authenticate::class,
+        ]);
+
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })->create();
+```
+
 ### Laravel 5.2 and above
 
-Setup for middleware group supported for Laravel 5.2 above
+Setup for middleware group supported for Laravel 5.2 above (~v10)
 
 Modify `config/adminer.php` : `'middleware' => 'adminer',`
 
@@ -123,6 +153,7 @@ return [
 ];
 ```
 
+- [Adminer Plugins](https://www.adminer.org/en/plugins/)
 
 ## Access adminer
 
