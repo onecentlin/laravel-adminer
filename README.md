@@ -1,8 +1,13 @@
 # Laravel Adminer Database Manager
 
-Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5/6/7/8/9.
+Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5 and above.
 
 Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, SimpleDB, MongoDB, Elasticsearch, and etc.
+
+## v7.2 Changes
+
+- Laravel 12.x Compatibility
+- Adminer update to v4.17.1
 
 ## v7.0 New Features
 
