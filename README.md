@@ -4,7 +4,13 @@ Light weight [Adminer](https://www.adminer.org) database management tool integra
 
 Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, SimpleDB, MongoDB, Elasticsearch, and etc.
 
-## v7.2 Changes
+## v8.0 Update
+
+- Adminer update to v5.0.1 (namespace added)
+
+> Notice: if you are using plugins, please check namespace with `Adminer`.
+
+## v7.2 Update
 
 - Laravel 12.x Compatibility
 - Adminer update to v4.17.1
