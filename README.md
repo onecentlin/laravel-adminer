@@ -6,7 +6,7 @@ Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, S
 
 ## v8.0 Update
 
-- Adminer update to v5.0.1 (namespace added)
+- Adminer update to v5.0.x (namespace added)
 
 > Notice: if you are using plugins, please check namespace with `Adminer`.
 
