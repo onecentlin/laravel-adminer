@@ -163,7 +163,7 @@ class AdminerPlugin extends Adminer\Adminer {
 		return $this->_applyPlugin(__FUNCTION__, $args);
 	}
 
-	function head() {
+	function head($Fb = null) {
 		$args = func_get_args();
 		return $this->_applyPlugin(__FUNCTION__, $args);
 	}
