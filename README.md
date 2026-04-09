@@ -50,7 +50,7 @@ Update `composer.json` in require section:
 
 ```json
 "require": {
-    "iamashishk/laravel-adminer": "^7.0"
+    "iamashishk/laravel-adminer": "^9.0"
 },
 ```
 
@@ -68,14 +68,14 @@ Update `config/app.php`
 ```php
 'providers' => [
     ...
-    iamashishk\Adminer\ServiceProvider::class,
+    Iamashishk\Adminer\ServiceProvider::class,
 ];
 ```
 
 ## Publish config and theme file
 
 ```
-php artisan vendor:publish --provider="iamashishk\Adminer\ServiceProvider"
+php artisan vendor:publish --provider="Iamashishk\Adminer\ServiceProvider"
 ```
 
 This action will copy two files and one folder:
