@@ -158,12 +158,12 @@ class AdminerPlugin extends Adminer\Adminer {
 		return $this->_applyPlugin(__FUNCTION__, $args);
 	}
 
-	function csp() {
+	function csp(array $Gb) {
 		$args = func_get_args();
 		return $this->_applyPlugin(__FUNCTION__, $args);
 	}
 
-	function head() {
+	function head($Kb = null) {
 		$args = func_get_args();
 		return $this->_applyPlugin(__FUNCTION__, $args);
 	}
@@ -253,12 +253,12 @@ class AdminerPlugin extends Adminer\Adminer {
 		return $this->_applyPlugin(__FUNCTION__, $args);
 	}
 
-	function tableStructurePrint($fields) {
+	function tableStructurePrint(array $n, $yi = null) {
 		$args = func_get_args();
 		return $this->_applyPlugin(__FUNCTION__, $args);
 	}
 
-	function tableIndexesPrint($indexes) {
+	function tableIndexesPrint(array $w, array $yi) {
 		$args = func_get_args();
 		return $this->_applyPlugin(__FUNCTION__, $args);
 	}
