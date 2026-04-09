@@ -1,8 +1,15 @@
-# Laravel Adminer Database Manager - Fork from [onecentlin/laravel-adminer](https://github.com/onecentlin/laravel-adminer)
+# Laravel Adminer Database Manager
 
 Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5 and above.
 
 Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, SimpleDB, MongoDB, Elasticsearch, and etc.
+
+## v9.0.1 Update
+
+- Adminer update to v5.4.2 (namespace added)
+- Custom hostname binding.
+
+> Notice: if you are using plugins, please check namespace with `Adminer`.
 
 ## v8.0 Update
 
@@ -34,7 +41,7 @@ Various database support: MySQL, SQLite, PostgreSQL, Oracle, MS SQL, Firebird, S
 ## Installation
 
 ```
-composer require onecentlin/laravel-adminer
+composer require iamashishk/laravel-adminer
 ```
 
 OR
@@ -43,13 +50,13 @@ Update `composer.json` in require section:
 
 ```json
 "require": {
-    "onecentlin/laravel-adminer": "^7.0"
+    "iamashishk/laravel-adminer": "^7.0"
 },
 ```
 
 Run:
 ```
-composer update onecentlin/laravel-adminer
+composer update iamashishk/laravel-adminer
 ```
 
 ## Register package
@@ -61,14 +68,14 @@ Update `config/app.php`
 ```php
 'providers' => [
     ...
-    Onecentlin\Adminer\ServiceProvider::class,
+    iamashishk\Adminer\ServiceProvider::class,
 ];
 ```
 
 ## Publish config and theme file
 
 ```
-php artisan vendor:publish --provider="Onecentlin\Adminer\ServiceProvider"
+php artisan vendor:publish --provider="iamashishk\Adminer\ServiceProvider"
 ```
 
 This action will copy two files and one folder:
@@ -174,11 +181,11 @@ Open URL in web browser
 http://[your.domain.com]/adminer
 ```
 
-![Screenshot](https://raw.githubusercontent.com/onecentlin/laravel-adminer/master/screenshots/adminer-db-support.png "various database support")
+![Screenshot](https://raw.githubusercontent.com/iamashishk/laravel-adminer/master/screenshots/adminer-db-support.png "various database support")
 
 ## Remarks
 
 Due to function name conflicts of Laravel 5 and Adminer, adminer.php file
 functions `cookie()`, `redirect()` and `view()` are prefixed with `adm_` prefix.
 
-Inspired by [miroc](https://github.com/miroc/Laravel-Adminer)
+Inspired by [onecentlin/laravel-adminer](https://github.com/onecentlin/laravel-adminer)
