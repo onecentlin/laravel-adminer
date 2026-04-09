@@ -1,6 +1,6 @@
 <?php
 
-namespace Onecentlin\Adminer\Http\Controllers;
+namespace Iamashishk\Adminer\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
@@ -15,7 +15,7 @@ class AdminerController extends Controller
         $this->middleware(config('adminer.middleware', 'adminer'));
 
         // adminer version
-        $this->version = '5.0.4';
+        $this->version = '5.4.2';
         // default adminer
         $this->adminer = $this->getAdminerFileName();
     }

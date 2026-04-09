@@ -1,4 +1,4 @@
-# Laravel Adminer Database Manager
+# Laravel Adminer Database Manager - Fork from [onecentlin/laravel-adminer](https://github.com/onecentlin/laravel-adminer)
 
 Light weight [Adminer](https://www.adminer.org) database management tool integrated into Laravel 5 and above.
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace Onecentlin\Adminer;
+namespace Iamashishk\Adminer;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
-    protected $namespace = 'Onecentlin\Adminer\Http\Controllers';
+    protected $namespace = 'Iamashishk\Adminer\Http\Controllers';
 
     public function boot(Router $router)
     {
@@ -30,11 +30,15 @@ class ServiceProvider extends BaseServiceProvider
                 $prefix = 'adminer';
             }
 
-            $group = $router->group([
+            $routeConfig = [
                 'namespace' => $this->namespace,
                 'as' => 'adminer::',
                 'prefix' => $prefix,
-            ], function () {
+            ];
+            if(filled(config("adminer.hostname"))){
+                $routeConfig["domain"] = config("adminer.hostname");
+            }
+            $group = $router->group($routeConfig, function () {
                 require __DIR__ . '/Http/routes.php';
             });
         }
