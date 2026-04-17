@@ -1,5 +1,5 @@
 {
-    "name": "onecentlin/laravel-adminer",
+    "name": "iamashishk/laravel-adminer",
     "description": "Laravel Adminer Database Manager",
     "keywords": [
         "laravel5",
@@ -10,6 +10,7 @@
         "laravel10",
         "laravel11",
         "laravel12",
+        "laravel13",
         "adminer",
         "database",
         "management",
@@ -19,8 +20,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Winnie Lin",
-            "email": "onecentlin@gmail.com"
+            "name": "Ashish Kohli",
+            "email": "developergurugram@gmail.com"
         }
     ],
     "require": {
@@ -31,13 +32,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Onecentlin\\Adminer\\": "src/"
+            "Iamashishk\\Adminer\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Onecentlin\\Adminer\\ServiceProvider"
+                "Iamashishk\\Adminer\\ServiceProvider"
             ]
         }
     },
